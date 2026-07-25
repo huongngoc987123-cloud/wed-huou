@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    background-color: #0D0B18;
+    color: #e5e0f3;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: var(--font-serif);
+  }
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 74, 141, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 74, 141, 0.15);
+}
+
+.glass-card-cyan:hover {
+  border-color: rgba(60, 215, 255, 0.4);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(60, 215, 255, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #FF007F, #7928CA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.primary-gradient-text {
+  background: linear-gradient(45deg, #ffb1c4, #dbb8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gradient {
+  background: linear-gradient(45deg, #FF007F, #7928CA);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.5);
+}
+
+.glow-aura {
+  position: absolute;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0B18;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2836;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #590028;
+}

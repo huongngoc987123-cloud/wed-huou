@@ -1,0 +1,6 @@
+{
+  "name": "VĐ VIỆT - Tinh Hoa Nhung Hươu & Nông Nghiệp Thông Minh",
+  "description": "Ứng dụng giới thiệu sản phẩm nhung hươu cao cấp và giải pháp trang trại thông minh VĐ VIỆT",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
