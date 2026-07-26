@@ -1,9 +1,7 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  experimental: {
-    // Allow importing from src/ for a smooth migration
-  },
+  outputFileTracingRoot: __dirname,
   images: {
     remotePatterns: [
       {
