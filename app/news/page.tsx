@@ -1,16 +1,16 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Article } from '../types';
-import { ARTICLES } from '../data/mockData';
-import { NewsCard } from '../components/NewsCard';
+import { Article } from '@/types';
+import { ARTICLES } from '@/data/mockData';
+import { NewsCard } from '@/components/NewsCard';
+import { useAppContext } from '@/context/AppContext';
 import { Sparkles, Search, Calendar, Clock, ArrowRight } from 'lucide-react';
 
-interface NewsViewProps {
-  onSelectArticle: (article: Article) => void;
-}
-
-export const NewsView: React.FC<NewsViewProps> = ({ onSelectArticle }) => {
+export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const { setSelectedArticle } = useAppContext();
 
   const featuredArticle = ARTICLES.find((a) => a.featured) || ARTICLES[0];
 
@@ -23,14 +23,14 @@ export const NewsView: React.FC<NewsViewProps> = ({ onSelectArticle }) => {
 
   const filteredArticles = ARTICLES.filter((a) => {
     const matchesCat = selectedCategory === 'all' || a.category === selectedCategory;
-    const matchesQuery = a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         a.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesQuery =
+      a.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      a.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesQuery;
   });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-20">
-      
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-mono font-semibold text-cyan-300">
@@ -41,14 +41,15 @@ export const NewsView: React.FC<NewsViewProps> = ({ onSelectArticle }) => {
           Tin Tức &amp; Sự Kiện VĐ VIỆT
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Cập nhật các công trình nghiên cứu dược liệu nhung hươu, thông tin triển lãm nông nghiệp và hướng dẫn chăm sóc sức khỏe chuyên sâu.
+          Cập nhật các công trình nghiên cứu dược liệu nhung hươu, thông tin
+          triển lãm nông nghiệp và hướng dẫn chăm sóc sức khỏe chuyên sâu.
         </p>
       </div>
 
       {/* Featured Article Hero */}
       {featuredArticle && (
-        <div 
-          onClick={() => onSelectArticle(featuredArticle)}
+        <div
+          onClick={() => setSelectedArticle(featuredArticle)}
           className="glass-card rounded-3xl overflow-hidden border border-white/15 cursor-pointer group hover:border-[#FF007F]/40 transition-all duration-500 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
         >
           <div className="lg:col-span-6 relative rounded-2xl overflow-hidden aspect-[16/10]">
@@ -127,13 +128,15 @@ export const NewsView: React.FC<NewsViewProps> = ({ onSelectArticle }) => {
             <NewsCard
               key={article.id}
               article={article}
-              onReadMore={onSelectArticle}
+              onReadMore={(a) => setSelectedArticle(a)}
             />
           ))}
         </div>
       ) : (
         <div className="text-center py-16 space-y-3 bg-white/5 rounded-3xl border border-white/10">
-          <p className="text-slate-400 text-sm">Không tìm thấy bài viết phù hợp với tìm kiếm của bạn.</p>
+          <p className="text-slate-400 text-sm">
+            Không tìm thấy bài viết phù hợp với tìm kiếm của bạn.
+          </p>
           <button
             onClick={() => {
               setSearchQuery('');
@@ -145,7 +148,6 @@ export const NewsView: React.FC<NewsViewProps> = ({ onSelectArticle }) => {
           </button>
         </div>
       )}
-
     </div>
   );
-};
+}

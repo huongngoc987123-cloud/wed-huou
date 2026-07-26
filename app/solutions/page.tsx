@@ -1,17 +1,22 @@
+'use client';
+
 import React from 'react';
-import { SOLUTIONS } from '../data/mockData';
-import { Cpu, Sprout, ArrowRight, ShieldCheck, CheckCircle2, Award, Activity, BarChart3, Radio } from 'lucide-react';
+import { SOLUTIONS } from '@/data/mockData';
+import { useAppContext } from '@/context/AppContext';
+import {
+  Cpu,
+  Sprout,
+  ArrowRight,
+  CheckCircle2,
+  Radio,
+  BarChart3,
+} from 'lucide-react';
 
-interface SolutionsViewProps {
-  onInquire: (interest: string) => void;
-}
+export default function SolutionsPage() {
+  const { openContactModal } = useAppContext();
 
-export const SolutionsView: React.FC<SolutionsViewProps> = ({
-  onInquire,
-}) => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 pb-20">
-      
       {/* Hero Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-xs font-mono font-semibold text-cyan-300">
@@ -22,20 +27,23 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
           Giải Pháp Nông Nghiệp &amp; Chuyển Giao Công Nghệ
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Tối ưu hóa năng suất thu hoạch nhung hươu, quản lý tự động bằng cảm biến sinh học và xây dựng chuỗi cung ứng khép kín bền vững.
+          Tối ưu hóa năng suất thu hoạch nhung hươu, quản lý tự động bằng cảm
+          biến sinh học và xây dựng chuỗi cung ứng khép kín bền vững.
         </p>
       </div>
 
       {/* Bento Grid Features */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
         <div className="glass-card p-6 rounded-3xl border border-white/10 space-y-4">
           <div className="w-10 h-10 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
             <Radio className="w-5 h-5 animate-pulse" />
           </div>
-          <h3 className="font-serif text-xl font-bold text-white">Cảm Biến Sinh Học IoT</h3>
+          <h3 className="font-serif text-xl font-bold text-white">
+            Cảm Biến Sinh Học IoT
+          </h3>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Gắn thiết bị theo dõi nhịp tim, nhiệt độ và tần suất vận động của từng cá thể hươu, phát hiện sớm dấu hiệu bất thường 24/7.
+            Gắn thiết bị theo dõi nhịp tim, nhiệt độ và tần suất vận động của
+            từng cá thể hươu, phát hiện sớm dấu hiệu bất thường 24/7.
           </p>
         </div>
 
@@ -43,9 +51,12 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
           <div className="w-10 h-10 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
             <BarChart3 className="w-5 h-5" />
           </div>
-          <h3 className="font-serif text-xl font-bold text-white">Dự Báo Điểm Nhung Đỉnh</h3>
+          <h3 className="font-serif text-xl font-bold text-white">
+            Dự Báo Điểm Nhung Đỉnh
+          </h3>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Thuật toán AI phân tích chu kỳ tăng trưởng của gạc nhung, cảnh báo chính xác thời điểm thu hoạch đạt dồi dào dưỡng chất IGF-1 nhất.
+            Thuật toán AI phân tích chu kỳ tăng trưởng của gạc nhung, cảnh báo
+            chính xác thời điểm thu hoạch đạt dồi dào dưỡng chất IGF-1 nhất.
           </p>
         </div>
 
@@ -53,12 +64,14 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
           <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
             <Sprout className="w-5 h-5" />
           </div>
-          <h3 className="font-serif text-xl font-bold text-white">Khẩu Phần Ăn Vi Sinh</h3>
+          <h3 className="font-serif text-xl font-bold text-white">
+            Khẩu Phần Ăn Vi Sinh
+          </h3>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Công thức phối trộn cỏ chăn nuôi cùng vi sinh hữu cơ độc quyền VĐ VIỆT giúp hươu tăng trưởng 20% thể trọng tự nhiên.
+            Công thức phối trộn cỏ chăn nuôi cùng vi sinh hữu cơ độc quyền VĐ
+            VIỆT giúp hươu tăng trưởng 20% thể trọng tự nhiên.
           </p>
         </div>
-
       </div>
 
       {/* Comprehensive Solutions Showcase */}
@@ -68,7 +81,7 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
         </h2>
 
         <div className="grid grid-cols-1 gap-8">
-          {SOLUTIONS.map((sol, index) => (
+          {SOLUTIONS.map((sol) => (
             <div
               key={sol.id}
               className="glass-card rounded-3xl overflow-hidden border border-white/10 p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
@@ -104,7 +117,10 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
                   </h4>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {sol.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-2 text-xs text-slate-300">
+                      <li
+                        key={fIdx}
+                        className="flex items-start gap-2 text-xs text-slate-300"
+                      >
                         <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </li>
@@ -120,8 +136,8 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
                   )}
 
                   <button
-                    onClick={() => onInquire(sol.title)}
-                    className="btn-gradient px-6 py-2.5 rounded-xl text-xs font-semibold text-white shadow-lg shadow-[#FF007F]/20 flex items-center gap-2 cursor-pointer"
+                    onClick={() => openContactModal(sol.title)}
+                    className="btn-gradient px-6 py-2.5 rounded-xl text-xs font-semibold text-white shadow-lg shadow-[#FF007F]/20 flex items-center gap-2"
                   >
                     <span>{sol.ctaText}</span>
                     <ArrowRight className="w-4 h-4" />
@@ -132,7 +148,6 @@ export const SolutionsView: React.FC<SolutionsViewProps> = ({
           ))}
         </div>
       </div>
-
     </div>
   );
-};
+}

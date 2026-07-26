@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Product } from '../types';
+import { Product } from '@/types';
 import { X, Sparkles, ShieldCheck, CheckCircle2, Clock, MapPin, Award, PhoneCall } from 'lucide-react';
 
 interface ProductDetailModalProps {

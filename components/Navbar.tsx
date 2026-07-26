@@ -1,30 +1,27 @@
+'use client';
+
 import React, { useState } from 'react';
-import { NavTab } from '../types';
-import { Sparkles, PhoneCall, Menu, X, ShieldCheck, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Sparkles, PhoneCall, Menu, X, ChevronRight } from 'lucide-react';
+import { useAppContext } from '@/context/AppContext';
 
-interface NavbarProps {
-  activeTab: NavTab;
-  setActiveTab: (tab: NavTab) => void;
-  onOpenContact: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({
-  activeTab,
-  setActiveTab,
-  onOpenContact,
-}) => {
+export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const { openContactModal } = useAppContext();
 
-  const navItems: { id: NavTab; label: string }[] = [
-    { id: 'home', label: 'Trang Chủ' },
-    { id: 'products', label: 'Sản Phẩm' },
-    { id: 'solutions', label: 'Giải Pháp 4.0' },
-    { id: 'heritage', label: 'Di Sản' },
-    { id: 'news', label: 'Tin Tức' },
+  const navItems: { id: string; label: string; href: string }[] = [
+    { id: 'home', label: 'Trang Chủ', href: '/' },
+    { id: 'products', label: 'Sản Phẩm', href: '/products' },
+    { id: 'solutions', label: 'Giải Pháp 4.0', href: '/solutions' },
+    { id: 'heritage', label: 'Di Sản', href: '/heritage' },
+    { id: 'news', label: 'Tin Tức', href: '/news' },
   ];
 
-  const handleNavClick = (tab: NavTab) => {
-    setActiveTab(tab);
+  const activeTab = pathname === '/' ? 'home' : pathname.slice(1);
+
+  const handleNavClick = () => {
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -34,8 +31,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <div 
-          onClick={() => handleNavClick('home')}
+        <Link 
+          href="/"
+          onClick={handleNavClick}
           className="flex items-center gap-3 cursor-pointer group select-none"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF007F] to-[#7928CA] p-[1px] shadow-lg shadow-[#FF007F]/20 group-hover:shadow-[#FF007F]/40 transition-all duration-300">
@@ -56,16 +54,17 @@ export const Navbar: React.FC<NavbarProps> = ({
               Tinh Hoa Nhung Hươu Việt
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2 bg-white/[0.03] p-1.5 rounded-full border border-white/10">
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => handleNavClick(item.id)}
+                href={item.href}
+                onClick={handleNavClick}
                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                   isActive
                     ? 'text-white shadow-md'
@@ -76,7 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FF007F] to-[#7928CA] -z-10 opacity-90 transition-all" />
                 )}
                 {item.label}
-              </button>
+              </Link>
             );
           })}
         </nav>
@@ -84,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Right CTA Actions */}
         <div className="hidden md:flex items-center gap-3">
           <button
-            onClick={onOpenContact}
+            onClick={() => openContactModal('Tư vấn tổng thể')}
             className="btn-gradient flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold text-white shadow-lg shadow-[#FF007F]/25 cursor-pointer"
           >
             <PhoneCall className="w-3.5 h-3.5" />
@@ -95,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile menu button */}
         <div className="flex md:hidden items-center gap-2">
           <button
-            onClick={onOpenContact}
+            onClick={() => openContactModal('Tư vấn tổng thể')}
             className="p-2 rounded-lg bg-[#FF007F]/20 text-[#ffb1c4] border border-[#FF007F]/40"
             aria-label="Liên Hệ"
           >
@@ -119,9 +118,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
               return (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
+                  href={item.href}
+                  onClick={handleNavClick}
                   className={`flex items-center justify-between px-4 py-3 text-sm font-medium rounded-xl transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-[#FF007F] to-[#7928CA] text-white'
@@ -130,7 +130,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <span>{item.label}</span>
                   <ChevronRight className="w-4 h-4 opacity-60" />
-                </button>
+                </Link>
               );
             })}
           </div>
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenContact();
+                openContactModal('Tư vấn tổng thể');
               }}
               className="w-full btn-gradient flex items-center justify-center gap-2 py-3 rounded-xl text-white font-semibold text-xs shadow-lg shadow-[#FF007F]/20"
             >

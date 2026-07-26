@@ -1,5 +1,7 @@
+'use client';
+
 import React, { useState } from 'react';
-import { InquiryFormState } from '../types';
+import { InquiryFormState } from '@/types';
 import { X, PhoneCall, CheckCircle2, Sparkles, Send, MapPin, Mail, Clock } from 'lucide-react';
 
 interface ContactModalProps {
@@ -7,7 +9,6 @@ interface ContactModalProps {
   onClose: () => void;
   initialProductInterest?: string;
 }
-
 export const ContactModal: React.FC<ContactModalProps> = ({
   isOpen,
   onClose,
@@ -156,7 +157,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full btn-gradient py-3 rounded-xl text-xs font-semibold text-white shadow-lg shadow-[#FF007F]/25 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full btn-gradient py-3 rounded-xl text-xs font-semibold text-white shadow-lg shadow-[#FF007F]/25 flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
                   <span>Gửi Yêu Cầu Tư Vấn Ngay</span>

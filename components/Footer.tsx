@@ -1,15 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
-import { NavTab } from '../types';
+import Link from 'next/link';
 import { Sparkles, Mail, Phone, MapPin, ShieldCheck, Award, CheckCircle2, ArrowRight } from 'lucide-react';
+import { useAppContext } from '@/context/AppContext';
 
-interface FooterProps {
-  setActiveTab: (tab: NavTab) => void;
-  onOpenContact: () => void;
-}
-
-export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) => {
+export const Footer: React.FC = () => {
   const [emailInput, setEmailInput] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const { openContactModal } = useAppContext();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
           
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-5">
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF007F] to-[#7928CA] p-[1px] shadow-lg shadow-[#FF007F]/20">
                 <div className="w-full h-full bg-[#0D0B18] rounded-[11px] flex items-center justify-center">
                   <Sparkles className="w-5 h-5 text-[#ff4a8d]" />
@@ -45,7 +44,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
                   VIETDZ - Ethereal Harvest
                 </p>
               </div>
-            </div>
+            </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               Tiên phong kiến tạo hệ sinh thái nông nghiệp công nghệ cao. Kết hợp bảo tồn tinh hoa nhung hươu truyền thống Việt Nam với giải pháp trang trại thông minh 4.0.
@@ -75,44 +74,29 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenContact }) =
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <button 
-                  onClick={() => setActiveTab('home')} 
-                  className="hover:text-[#ffb1c4] transition-colors"
-                >
+                <Link href="/" className="hover:text-[#ffb1c4] transition-colors">
                   Trang Chủ
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => setActiveTab('products')} 
-                  className="hover:text-[#ffb1c4] transition-colors"
-                >
+                <Link href="/products" className="hover:text-[#ffb1c4] transition-colors">
                   Sản Phẩm Nhung Hươu
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => setActiveTab('solutions')} 
-                  className="hover:text-[#ffb1c4] transition-colors"
-                >
+                <Link href="/solutions" className="hover:text-[#ffb1c4] transition-colors">
                   Giải Pháp Smart Farm
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => setActiveTab('heritage')} 
-                  className="hover:text-[#ffb1c4] transition-colors"
-                >
+                <Link href="/heritage" className="hover:text-[#ffb1c4] transition-colors">
                   Di Sản &amp; Câu Chuyện
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => setActiveTab('news')} 
-                  className="hover:text-[#ffb1c4] transition-colors"
-                >
+                <Link href="/news" className="hover:text-[#ffb1c4] transition-colors">
                   Tin Tức &amp; Nghiên Cứu
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

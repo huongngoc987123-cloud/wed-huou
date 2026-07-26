@@ -1,4 +1,4 @@
-import { Product, Solution, Article, CoreValue } from '../types';
+import { Product, Solution, Article, CoreValue } from '@/types';
 
 export const PRODUCTS: Product[] = [
   {
@@ -160,11 +160,7 @@ export const ARTICLES: Article[] = [
     date: '24 Tháng 5, 2024',
     readTime: '8 phút đọc',
     excerpt: 'Việc áp dụng công nghệ lọc nano và sấy thăng hoa nhiệt độ âm giúp tăng cường độ tinh khiết của dịch chiết nhung hươu vượt bậc, giữ nguyên tính toàn vẹn của các peptit sinh học.',
-    content: `Việc áp dụng công nghệ lọc nano tiên tiến và quy trình phân tách phân tử nhiệt độ thấp tại nhà máy VĐ VIỆT đã tạo ra bước ngoặt trong ngành chế biến dược liệu. 
-
-Bằng cách loại bỏ hoàn toàn tạp chất mà không làm gãy chuỗi protein nhạy cảm, dịch chiết nhung hươu VĐ VIỆT đạt chứng nhận ISO 22000 và tiêu chuẩn GMP quốc tế.
-
-Các thử nghiệm lâm sàng độc lập cho thấy hàm lượng IGF-1 (nhân tố tăng trưởng tương tự insulin) được bảo tồn lên đến 99.2% so với nhung tươi nguyên bản.`,
+    content: `Việc áp dụng công nghệ lọc nano tiên tiến và quy trình phân tách phân tử nhiệt độ thấp tại nhà máy VĐ VIỆT đã tạo ra bước ngoặt trong ngành chế biến dược liệu. \n\nBằng cách loại bỏ hoàn toàn tạp chất mà không làm gãy chuỗi protein nhạy cảm, dịch chiết nhung hươu VĐ VIỆT đạt chứng nhận ISO 22000 và tiêu chuẩn GMP quốc tế.\n\nCác thử nghiệm lâm sàng độc lập cho thấy hàm lượng IGF-1 (nhân tố tăng trưởng tương tự insulin) được bảo tồn lên đến 99.2% so với nhung tươi nguyên bản.`,
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAUkE4nPGyvqM2ih-h1LlM42mh41gWyn6zmZkO_LqG0DpvDuBkCyTE1WtIb3-SzHz_EOfpzPXU8ng_ujiMW9Zz8Yfsen1vO9rcoOPnKTc-e5OB8zWp3XX8AUnxyk69tbW0ARNVpBzoVHOwlqDfFl0cSBb7LU-8_J-vXkaOAC94WdWayS33dRgLx8gTaFOhVTdRwoSKSEFlAMO8G_Md__Dld-yUQHivGaXIyVXCljKxcT0qGHHqWPhVTZv19UNaaKDICVtb3CS-A7kc',
     featured: true
   },
@@ -175,9 +171,7 @@ Các thử nghiệm lâm sàng độc lập cho thấy hàm lượng IGF-1 (nhâ
     date: '12 Tháng 5, 2024',
     readTime: '5 phút đọc',
     excerpt: 'Gây ấn tượng mạnh với các giải pháp trang trại thông minh và bộ sản phẩm nhung hươu cao cấp, VĐ VIỆT thu hút hơn 5,000 lượt khách tham quan và đối tác thương thảo.',
-    content: `Gian hàng triển lãm của VĐ VIỆT tại Triển lãm Nông nghiệp Công nghệ cao Quốc tế 2024 đã trở thành tâm điểm thu hút giới chuyên gia và doanh nghiệp.
-
-Tại đây, mô hình thu nhỏ trang trại hươu 4.0 tích hợp trí tuệ nhân tạo AI cùng bộ sưu tập nhung hươu sấy thăng hoa đã nhận được sự đánh giá rất cao từ Bộ Nông nghiệp & Phát triển Nông thôn.`,
+    content: `Gian hàng triển lãm của VĐ VIỆT tại Triển lãm Nông nghiệp Công nghệ cao Quốc tế 2024 đã trở thành tâm điểm thu hút giới chuyên gia và doanh nghiệp.\n\nTại đây, mô hình thu nhỏ trang trại hươu 4.0 tích hợp trí tuệ nhân tạo AI cùng bộ sưu tập nhung hươu sấy thăng hoa đã nhận được sự đánh giá rất cao từ Bộ Nông nghiệp & Phát triển Nông thôn.`,
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB47UmidCwjjqC_P1V-27VLa1l6YlEdrxGgiWQglY4TglZ6zrxfDFBesFrNpnaSphzOF44eAbkJimfDIiCfFI6TM5nTK-7-Zna52M9cdbjj5Y5NlGV9mGquNq7C114o9vFu4PkE7y2-GkJF9bKQbsz0MQjVIZcUqMYSDQcx1KaiFzPnjBlfHUGu00GgbMFjiren_U0UKCf_0Z6GFo7-3NllM-CTqVz31DAItcDzmTnfn3cQVrGUf80EELC0CeVBtUbW08gfj5HWm5c',
     featured: false
   },
@@ -188,13 +182,7 @@ Tại đây, mô hình thu nhỏ trang trại hươu 4.0 tích hợp trí tuệ 
     date: '05 Tháng 5, 2024',
     readTime: '6 phút đọc',
     excerpt: 'Chuyên gia dinh dưỡng chia sẻ 5 cách kết hợp bột nhung hươu vào thực đơn hàng ngày cực hiệu quả cho người lớn tuổi, vận động viên và người mới ốm dậy.',
-    content: `Bột nhung hươu sấy thăng hoa là dạng dược liệu cực kỳ dễ hấp thụ nếu biết kết hợp đúng cách. 
-
-1. Pha chế cùng mật ong rừng và nước ấm 50°C vào buổi sáng sớm.
-2. Rắc trực tiếp lên bát cháo yến mạch hoặc cháo gà ấm.
-3. Trộn vào sinh tố hoa quả nguyên chất giúp tăng cường năng lượng tập luyện.
-4. Ngâm cùng sữa chua không đường làm bữa phụ dinh dưỡng.
-5. Dùng làm nguyên liệu hầm canh đông y cao cấp.`,
+    content: `Bột nhung hươu sấy thăng hoa là dạng dược liệu cực kỳ dễ hấp thụ nếu biết kết hợp đúng cách. \n\n1. Pha chế cùng mật ong rừng và nước ấm 50°C vào buổi sáng sớm.\n2. Rắc trực tiếp lên bát cháo yến mạch hoặc cháo gà ấm.\n3. Trộn vào sinh tố hoa quả nguyên chất giúp tăng cường năng lượng tập luyện.\n4. Ngâm cùng sữa chua không đường làm bữa phụ dinh dưỡng.\n5. Dùng làm nguyên liệu hầm canh đông y cao cấp.`,
     imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC-HU2GlGEvA0r7aW6QMRB_6rkxWXjEjgKmVKYFMqFW157hOAgCEI9C_INFTT46gy5jHVlZFR6bPVeYu8Hk6NCfnpAg8M24hy59txi9epqrUPV8RFHJiC5Om9BYTn-jK8hMV2CCrKsSKdQ_RoeYPYdlEXYSyIerTxSBEapAf6Icefr2UtmFJP0ytHF15DS40N-tQrtROo4SPIhDl3anS4PEZjhhsmZzAEvsAnkBlbXqyBKL0x72S4RTQ33XpAPxpf46YTPtDtkxuVc',
     featured: false
   }

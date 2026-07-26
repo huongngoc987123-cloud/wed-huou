@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Article } from '../types';
+import { Article } from '@/types';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 interface NewsCardProps {

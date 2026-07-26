@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Product } from '../types';
+import { Product } from '@/types';
 import { Sparkles, ArrowRight, ShieldCheck, Check } from 'lucide-react';
 
 interface ProductCardProps {
@@ -20,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <img
           src={product.imageUrl}
           alt={product.name}
-          className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
+          className="w-full h-full object-cover object-center group-hover:scale-[1.08] transition-transform duration-700 ease-out"
           loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0D0B18] via-transparent to-transparent opacity-80" />

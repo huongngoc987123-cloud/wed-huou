@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Article } from '../types';
+import { Article } from '@/types';
 import { X, Calendar, Clock, Share2, Sparkles } from 'lucide-react';
 
 interface ArticleModalProps {
@@ -58,7 +60,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
 
         <div className="space-y-4 text-xs sm:text-sm text-slate-200 leading-relaxed whitespace-pre-line">
           <p className="p-4 rounded-xl bg-white/5 border-l-4 border-[#FF007F] text-slate-200 font-medium italic">
-            "{article.excerpt}"
+            &ldquo;{article.excerpt}&rdquo;
           </p>
 
           <div className="pt-2 text-slate-300 leading-loose">
@@ -73,11 +75,13 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
           </div>
           <button
             onClick={() => {
-              if (navigator.share) {
-                navigator.share({ title: article.title, url: window.location.href });
-              } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Đã sao chép liên kết bài viết!');
+              if (typeof navigator !== 'undefined') {
+                if (navigator.share) {
+                  navigator.share({ title: article.title, url: window.location.href });
+                } else {
+                  navigator.clipboard.writeText(window.location.href);
+                  alert('Đã sao chép liên kết bài viết!');
+                }
               }
             }}
             className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-xs font-semibold text-slate-300 border border-white/10"

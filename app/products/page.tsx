@@ -1,26 +1,23 @@
+'use client';
+
 import React, { useState } from 'react';
-import { Product } from '../types';
-import { PRODUCTS } from '../data/mockData';
-import { ProductCard } from '../components/ProductCard';
-import { Sparkles, Search, Filter, ShieldCheck } from 'lucide-react';
+import { Product } from '@/types';
+import { PRODUCTS } from '@/data/mockData';
+import { ProductCard } from '@/components/ProductCard';
+import { useAppContext } from '@/context/AppContext';
+import { Sparkles, Search, ShieldCheck } from 'lucide-react';
 
-interface ProductsViewProps {
-  onSelectProduct: (product: Product) => void;
-  onInquire: (productName: string) => void;
-}
-
-export const ProductsView: React.FC<ProductsViewProps> = ({
-  onSelectProduct,
-  onInquire,
-}) => {
+export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const { setSelectedProduct, openContactModal } = useAppContext();
 
   const filteredProducts = PRODUCTS.filter((p) => {
     const matchesCat = selectedCategory === 'all' || p.category === selectedCategory;
-    const matchesQuery = p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         p.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         p.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesQuery =
+      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCat && matchesQuery;
   });
 
@@ -34,7 +31,6 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 pb-20">
-      
       {/* Header Banner */}
       <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono font-semibold text-[#ffb1c4]">
@@ -45,13 +41,14 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
           Sản Phẩm Nhung Hươu Cao Cấp
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-          Được thu hoạch từ đàn hươu sao tuyển chọn, áp dụng công nghệ sấy thăng hoa nhiệt độ âm -40°C giúp duy trì hàm lượng IGF-1 và dinh dưỡng sinh học nguyên bản.
+          Được thu hoạch từ đàn hươu sao tuyển chọn, áp dụng công nghệ sấy thăng
+          hoa nhiệt độ âm -40°C giúp duy trì hàm lượng IGF-1 và dinh dưỡng sinh
+          học nguyên bản.
         </p>
       </div>
 
       {/* Search & Category Filter Bar */}
       <div className="glass-card p-4 rounded-2xl border border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-        
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
           {categories.map((cat) => (
@@ -80,7 +77,6 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
           />
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
         </div>
-
       </div>
 
       {/* Product Grid */}
@@ -90,14 +86,16 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
             <ProductCard
               key={product.id}
               product={product}
-              onSelect={onSelectProduct}
-              onInquire={onInquire}
+              onSelect={(p) => setSelectedProduct(p)}
+              onInquire={(name) => openContactModal(`Sản phẩm: ${name}`)}
             />
           ))}
         </div>
       ) : (
         <div className="text-center py-16 space-y-3 bg-white/5 rounded-3xl border border-white/10">
-          <p className="text-slate-400 text-sm">Không tìm thấy sản phẩm phù hợp với từ khóa "{searchQuery}".</p>
+          <p className="text-slate-400 text-sm">
+            Không tìm thấy sản phẩm phù hợp với từ khóa &ldquo;{searchQuery}&rdquo;.
+          </p>
           <button
             onClick={() => {
               setSearchQuery('');
@@ -116,18 +114,20 @@ export const ProductsView: React.FC<ProductsViewProps> = ({
           <ShieldCheck className="w-6 h-6 text-emerald-400 shrink-0" />
           <div>
             <strong className="text-white block">Cam Kết Chất Lượng Thật 100%</strong>
-            <span>Tất cả sản phẩm đều đi kèm tem chống giả, mã QR truy xuất mã DNA và chứng nhận kiểm định vệ sinh ATTP.</span>
+            <span>
+              Tất cả sản phẩm đều đi kèm tem chống giả, mã QR truy xuất mã DNA
+              và chứng nhận kiểm định vệ sinh ATTP.
+            </span>
           </div>
         </div>
 
         <button
-          onClick={() => onInquire('Tư vấn kiểm định & mẫu dùng thử')}
+          onClick={() => openContactModal('Tư vấn kiểm định & mẫu dùng thử')}
           className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/15 shrink-0"
         >
           Yêu Cầu Mẫu Dùng Thử
         </button>
       </div>
-
     </div>
   );
-};
+}
