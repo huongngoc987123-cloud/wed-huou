@@ -17,6 +17,7 @@ export const Navbar: React.FC = () => {
     { id: 'solutions', label: 'Giải Pháp 4.0', href: '/solutions' },
     { id: 'heritage', label: 'Di Sản', href: '/heritage' },
     { id: 'news', label: 'Tin Tức', href: '/news' },
+    { id: 'contact', label: 'Liên Hệ', href: '/contact' },
   ];
 
   const activeTab = pathname === '/' ? 'home' : pathname.slice(1);

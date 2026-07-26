@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Contact {
+  id              String   @id @default(cuid())
+  fullName        String   @map("full_name")
+  phone           String
+  email           String?
+  partnerType     String   @map("partner_type")
+  productInterest String?  @map("product_interest")
+  message         String?
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  @@map("contacts")
+}
